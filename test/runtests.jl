@@ -358,39 +358,6 @@ G3 Y0 A-10 R5.0
     self.assert_output(expected)
     self.assert_position({'x': 0, 'y': 0, 'z': 4, 'A': 0})
 
-def test_toggle_pressure(self):
-    self.g.toggle_pressure(0)
-    expected = 'Call togglePress P0'
-    self.assert_output(expected)
-
-def test_align_nozzle(self):
-    self.g.align_nozzle('A')
-    expected = 'Call alignNozzle Q-15 R0.1 L1 I-72 J1'
-    self.assert_output(expected)
-    with self.assertRaises(RuntimeError):
-        self.g.align_nozzle('F')
-
-def test_align_zero_nozzle(self):
-    self.g.align_zero_nozzle('A')
-    expected = 'Call alignZeroNozzle Q-15 R0.1 L1 I-72 J1'
-    self.assert_output(expected)
-    with self.assertRaises(RuntimeError):
-        self.g.align_zero_nozzle('F')
-
-def test_set_pressure(self):
-    self.g.set_pressure(0, 10)
-    expected = 'Call setPress P0 Q10'
-    self.assert_output(expected)
-
-def test_set_valve(self):
-    self.g.set_valve(0, 1)
-    expected = '$DO0.0=1'
-    self.assert_output(expected)
-
-def test_save_alignment(self):
-    self.g.save_alignment()
-    expected = 'Call save_value Q1'
-    self.assert_output(expected)
 
 ### helper functions #####################################################
 

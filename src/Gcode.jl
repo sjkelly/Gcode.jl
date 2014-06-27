@@ -13,6 +13,7 @@ type G
     absolute::Bool
     feedrate::Real
     flavor::String
+    view::Bool
 end
 
 function G(;output::String = "",
@@ -22,7 +23,8 @@ function G(;output::String = "",
             position::Dict = Dict{String, Float64}(),
             absolute::Bool = true,
             feedrate::Real = 0,
-            flavor::String = "Marlin")
+            flavor::String = "Marlin",
+            view::Bool = false)
     
     io = (output != "") ? open(output, "w") : STDOUT
     if header != ""
@@ -30,7 +32,7 @@ function G(;output::String = "",
     end
     
     
-    return G(io,echo,header,footer,position,absolute,feedrate,flavor)
+    return G(io,echo,header,footer,position,absolute,feedrate,flavor,view)
 end
 
 function format_args(;args...)
